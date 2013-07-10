@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+<title></title>
+<link rel="apple-touch-icon-precomposed" href="http://d2zlar5jb2qokf.cloudfront.net/general/p17v3sbumpuaa8o8d67rtk1v0j3_114px.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function(){
+$.mobile.defaultPageTransition  = 'fade';
+});
+</script>
+<script type="text/javascript">if (navigator.userAgent.match(/iPhone/i)) {
+$(window).bind('orientationchange', function(event) {
+$('meta[name="viewport"]').attr('content',
+'height=device-width,width=device-height,initial-scale=1.0,maximum-scale=1.0');
+$('meta[name="viewport"]').attr('content',
+'height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0');
+}).trigger('orientationchange');
+}</script><script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+  //handle leads
+	$("#btn_lead").click(function(){
+		//perform basic checks
+		error='';
+		if ($("#lead_name").val()=='' || $("#lead_email").val()=='' || $("#lead_phone").val()=='') 
+			error="Please fill the form to continue\n";
+		if (error=='' && $("#lead_email").val().indexOf('@')<1) 
+			error="Please make sure your email is correct\n";
+		if (error!=''){
+			alert(error);
+			return;
+		}
+		
+		//submit
+		var data_array={i: 7999, 
+		name: $("#lead_name").val(), 
+		email: $("#lead_email").val(), 
+		phone: $("#lead_phone").val()};
+				url='http://www.sitemobi.org/show/lead_capture.php?callback=?';
+		url='http://www.octomobi.com/show/lead_capture.php?callback=?';
+				
+		$.ajax({
+			type: 'GET',
+			url: url,
+			data: data_array,
+			async: false,
+			jsonpCallback: 'jsonCallback',
+			contentType: "application/json",
+			dataType: 'jsonp',
+			success: function(json) {
+			   if(json.status=='success'){
+					$("#lead_download").show();
+					$("#lead_notification").html('Your data has been saved, thank you!').show(200);
+					$("#lead_input").hide();
+				}
+			},
+			error: function(e) {
+			   console.log(e.message);
+			}
+		});
+	});
+});
+</script>
+
+</head>
+<style type="text/css">
+@media all and (min-width:1025px) { 
+	div[data-role="page"]{width:320px !important;}
+}
+.bottom-icons .ui-btn .ui-btn-inner {
+	padding-top: 40px !important;
+}
+.bottom-icons .ui-btn .ui-icon {
+	width: 30px!important;
+	height: 30px!important;
+	margin-left: -15px !important;
+	box-shadow: none!important;
+	-moz-box-shadow: none!important;
+	-webkit-box-shadow: none!important;
+	-webkit-border-radius: none !important;
+	border-radius: none !important;
+}
+#twitter .ui-icon {
+		background:  url(http://www.sitemobi.org/show/hp-twitter.png) 50% 50% no-repeat;
+		background-size: 24px 22px;
+}
+.ui-icon-twitter {
+		background:  url(http://www.sitemobi.org/show/hp-twitter.png) 50% 50% no-repeat;
+		background-size: 18px 16px;
+}
+#facebook .ui-icon {
+		background:  url(http://www.sitemobi.org/show/icon_facebook.png) 50% 50% no-repeat;
+		background-size: 24px 22px;
+}
+.ui-icon-facebook {
+		background:  url(http://www.sitemobi.org/show/icon_facebook.png) 50% 50% no-repeat;
+		background-size: 18px 16px;
+}
+.top_container {
+	background-color:#000;
+	width:80%;
+	text-align:center;
+	margin:10px auto 0 auto;
+	padding:5px;
+	opacity:0.7;
+	-moz-border-radius: 	.6em;
+	-webkit-border-radius: 	.6em;
+	border-radius: 			.6em;
+}
+.content_container {
+	background-color:#000;
+	color:#FFFFFF;
+	text-shadow:none;
+	padding:1px 10px 20px 10px;;
+	opacity:0.7;
+	-moz-border-radius: 	.6em;
+	-webkit-border-radius: 	.6em;
+	border-radius: 			.6em;
+}
+
+#second-image{
+	max-width:100%;	
+}
+.ui-body-c {
+	background: 			#ffffff;
+	background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+	background-image: -webkit-gradient(linear,left top,left bottom,	color-stop(0,#ffffff),color-stop(1,#ffffff));
+	text-shadow:none;	
+}
+
+
+.ui-btn-up-a {
+	background: 			#808080;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#808080 ), to( #808080 )); 
+	background-image: -webkit-linear-gradient(#808080, #808080);
+	background-image: -moz-linear-gradient(#808080, #808080); 
+	background-image: -ms-linear-gradient(#808080, #808080 );
+	background-image:  -o-linear-gradient(#808080, #808080); 
+	background-image:  linear-gradient(#808080, #808080);
+}
+.ui-btn-hover-a {
+	background: 			#727272;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #808080), to( #727272)); 
+	background-image: -webkit-linear-gradient(#727272 , #727272 ); 
+	background-image:    -moz-linear-gradient(#727272 , #727272 ); 
+	background-image:     -ms-linear-gradient(#727272 , #727272 ); 
+	background-image:      -o-linear-gradient(#727272 , #727272 ); 
+	background-image:         linear-gradient(#727272 , #727272 );
+}
+.ui-bar-a {
+	background: 			#808080;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #808080 ), to( #808080 )); 
+	background-image: -webkit-linear-gradient(#808080 , #808080 ); 
+	background-image:    -moz-linear-gradient(#808080 , #808080 ); 
+	background-image:     -ms-linear-gradient(#808080 , #808080 ); 
+	background-image:      -o-linear-gradient(#808080 , #808080 ); 
+	background-image:         linear-gradient(#808080 , #808080 );
+}
+
+
+</style>
+<body>
+<!-- HOME PAGE -->
+<div data-role="page" id="home" data-theme="c"  class="home_background_image"> 
+<div data-role="header" data-theme="a"><h1>Home</h1></div><div style="text-align:center;width:100%"><img id="second-image" src="http://d2zlar5jb2qokf.cloudfront.net/general/p17v3sbumpuaa8o8d67rtk1v0j3_750px.jpg"></div>  <div data-role="content">
+          <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+	<li><a href="#content">FAQs</a></li>
+<li><a href="/content?tx_content_title=TW9kZWxz&tx_contentid=51dd2416295ba&contact_tx_address=&contact_tx_city=&contact_tx_postcode=&contact_tx_country=&edges_theme=a&page_theme=c&gallery_tx_galleryid=&tx_name=&contact_bl_header=&contact_tx_number=&bl_contact=1&rss_tx_link=&tx_background=%23ffffff&tx_background2=%23ffffff&tx_elements=%23808080&tx_elements2=%23808080&tx_elements3=%23727272&tx_elements4=%23727272&bl_calculated_elements=1&bl_calculated_background=1&tx_back_name=Back&tx_callus_name=Call%2520Us&highres=">Models</a></li>
+<li><a href="/content?tx_content_title=Q29udGVudCUyMFBhZ2U=&tx_contentid=&contact_tx_address=&contact_tx_city=&contact_tx_postcode=&contact_tx_country=&edges_theme=a&page_theme=c&gallery_tx_galleryid=&tx_name=&contact_bl_header=&contact_tx_number=&bl_contact=1&rss_tx_link=&tx_background=%23ffffff&tx_background2=%23ffffff&tx_elements=%23808080&tx_elements2=%23808080&tx_elements3=%23727272&tx_elements4=%23727272&bl_calculated_elements=1&bl_calculated_background=1&tx_back_name=Back&tx_callus_name=Call%2520Us&highres=">Content Page</a></li>
+<li><a href="/content?tx_content_title=Q29udGVudCUyMFBhZ2U=&tx_contentid=&contact_tx_address=&contact_tx_city=&contact_tx_postcode=&contact_tx_country=&edges_theme=a&page_theme=c&gallery_tx_galleryid=&tx_name=&contact_bl_header=&contact_tx_number=&bl_contact=1&rss_tx_link=&tx_background=%23ffffff&tx_background2=%23ffffff&tx_elements=%23808080&tx_elements2=%23808080&tx_elements3=%23727272&tx_elements4=%23727272&bl_calculated_elements=1&bl_calculated_background=1&tx_back_name=Back&tx_callus_name=Call%2520Us&highres=">Content Page</a></li>
+<li><a href="/content?tx_content_title=Q29udGVudCUyMFBhZ2U=&tx_contentid=&contact_tx_address=&contact_tx_city=&contact_tx_postcode=&contact_tx_country=&edges_theme=a&page_theme=c&gallery_tx_galleryid=&tx_name=&contact_bl_header=&contact_tx_number=&bl_contact=1&rss_tx_link=&tx_background=%23ffffff&tx_background2=%23ffffff&tx_elements=%23808080&tx_elements2=%23808080&tx_elements3=%23727272&tx_elements4=%23727272&bl_calculated_elements=1&bl_calculated_background=1&tx_back_name=Back&tx_callus_name=Call%2520Us&highres=">Content Page</a></li>
+<li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </div>
+ 
+<div data-role="footer" data-theme="c"><h3 style="padding:0;margin-left:0;margin-right:0;font-weight:normal"><a href="/show/redirect_out.php?tx_url=aHR0cDovL3d3dy5lbGVjdHJvYmlrZXMuY29tLmF1Lw==&i=7999" rel="external" target="_blank">Full Site</a> | Mobile Site</h3></div></div>
+
+
+<!-- ABOUT US PAGE -->
+<div data-role="page" id="about" data-theme="c" > 
+<div data-role="header" data-theme="a"><a href="javascript:history.back()" data-icon="arrow-l" data-theme="a">Back</a><h1></h1></div>  <div data-role="content">
+    <h2></h2> 
+  	     </div>
+</div>
+
+
+<!-- CONTENT PAGE -->
+<div data-role="page" id="content" data-theme="c" > <div data-role="header" data-theme="a"><a href="javascript:history.back()" data-icon="arrow-l" data-theme="a">Back</a><h1>FAQs</h1></div>  <div data-role="content"> 
+    <h2>FAQs</h2> 
+  <div><p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><strong>Q. When I order on-line do Electro Bikes use a secure server?</strong></span><br /><span style="font-family: arial, helvetica, sans-serif; font-size: medium;">A.Yes. Absolutely. The Electro Bikes site uses a128-bit SSL certificate offering the highest level of encryption and security possible via&nbsp;<span style="text-decoration: underline;"><span style="color: #0000ff;"><a href="http://eway.com.au/">eWay<br /></a></span></span>This means you can rest assured that communications between your browser and this site's web servers are private safe and secure.<br /><br /><br /><strong>Q. Do you charge a delivery fee?</strong><br />A. Yes. We have a standard charge of $0 for shipping anywhere within Australia!</span></p>
+<p><br /><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><strong>Q. Do I need a license to ride an electric bike?</strong></span><br /><span style="font-family: arial, helvetica, sans-serif; font-size: medium;">A. No. As long as the power output of the motor is under 200w, as all of our electric bicycles are.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. Do I need to register an electric bicycle?</strong><br />A. No. Under Australian law our electric bicycles are classed as ordinary bicycles, as they have a power output of less than 200w.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. How far can I travel on one charge?</strong><br />A. The distance travelled would vary depending on several factors, for example the number of hills climbed, tyre pressures, weight of rider, wind resistance, speed, and amount of pedal assistance given. A rough guide though is anywhere between 20 and 45kms.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. Do your electric bicycles come complete with a battery charger - and if so do they carry the C-tick mark and the required electrical approvals?</strong><br />A. All of our bicycles are supplied with an approved battery charger. Our C-tick approval number is N17605 and our electrical approval number is N19814.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. What happens if the battery goes flat while I'm riding?</strong><br />A. Simply ride the electric bicycle as a normal bicycle.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. How often will my electro bike need servicing?</strong><br />A. We recommend a full service every two years under normal use.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. What is the warranty?</strong><br />A. We offer a comprehensive manufacturers warranty on all our electric bicycles:</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. How fast will my bike go?</strong><br />A. The speed would vary depending on several factors, for example, tyre pressures, weight of rider, wind resistance battery condition, amount of pedal assistance given. A rough guide though is around 25km/h unassisted, and faster than that depending on how fast you can pedal!</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. Do I need to pedal?</strong><br />A. Only if you want to - the choice is yours. However, battery power together with pedal power is the recommended combination for most effective operation. In any case pedal assistance will be required to maintain your speed on hills.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. What are the running costs?</strong><br />A. Running costs will vary depending on the speed, terrain, tyre pressures, hills, battery size and type, riders weight, weight of luggage carried etc., but as a general indication around 5 to10cents a day!</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><strong>Q. Does the battery recharge when I pedal?</strong><br />A. No - it must be re-charged with the approved charger supplied with your electric bicycle.</span></p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="http://d2zlar5jb2qokf.cloudfront.net/editor/be10de58d4a08092bfb06a4c5b093a44.jpg" alt="" /><span style="font-family: arial, helvetica, sans-serif; font-size: medium;">Your Lancaster Electric bicycle purchased from Electro Bikes in Australia is fully guaranteed for twelve (12) months from the date of purchase against faults arising due to defects in manufacture or materials. We will repair or replace, at our option, any part found on examination by us and /or the manufacturer to be defective in material and/or workmanship.</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: medium;"><br /><span>In addition we offer a two (2) year limited warranty from the date of purchase against faults arising due to defects in manufacture or materials on the bicycle frame, including seat post and frame welds.</span><br /><span>This warranty does not extend to items which may need replacement due to normal wear and tear (tyres, bulbs, seats, handgrips, brake pads, fuses, brushes brake cables etc.) it also does not extend to items damaged due to inappropriate use of the vehicle.&nbsp;</span><strong>Batteries are covered by a six (6) months warranty</strong><span>&nbsp;from the original manufacturer - please note that gradual deterioration due to being left in a discharged state, misuse, or worn out through very heavy use is not covered.</span></span></p> </div>
+    </div>
+</div>
+
+
+<!-- CONTACT US US PAGE -->
+<div data-role="page" id="contact" data-theme="c" > 
+<div data-role="header" data-theme="a"><a href="javascript:history.back()" data-icon="arrow-l" data-theme="a">Back</a><h1>Contact Us</h1></div>  <div data-role="content"> 
+  	<h2>Contact Us</h2> 
+  
+      
+  <div style="margin: 20px 0 5px 0">
+  	 
+  </div>
+  
+    
+  
+	<div>
+  	</div>    
+
+  </div>
+</div>
+
+
+<!-- DOWNLOAD PAGE -->
+<div data-role="page" id="download" data-theme="c" > 
+<div data-role="header" data-theme="a"><a href="javascript:history.back()" data-icon="arrow-l" data-theme="a">Back</a><h1></h1></div>  <div data-role="content"> 
+  
+  <h2></h2> 
+    <br><br>
+	    
+      
+	  </div>
+</div>
+</body>
+</html>
